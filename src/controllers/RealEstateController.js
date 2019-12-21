@@ -28,7 +28,7 @@ exports.createRealEstate = (req, response) => {
     const elementCreated = Object.assign({}, req.body, { id_real_estate: data.insertId });
     response.status(200).json({
       success: true,
-      element: dto.getRealEstateDTO(elementCreated)
+      realEstate: dto.getRealEstateDTO(elementCreated)
     });
   });
 }
@@ -42,7 +42,7 @@ exports.updateRealEstate = (req, response) => {
     if (error) return genericError(response, error, 500);
     response.status(200).json({
       success: true,
-      element: dto.getRealEstateDTO(req.body)
+      realEstate: dto.getRealEstateDTO(req.body)
     });
   });
 }
