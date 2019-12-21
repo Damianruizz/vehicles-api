@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.route('/realEstates')
   .get(RealEstateController.getAllRealEstates)    
-  .post(mdRealEstate.validateParams, RealEstateController.createRealEstate);
+  .post(mdRealEstate.validateParams, RealEstateController.createRealEstate)
+  .put(mdRealEstate.validateParamsToUpdate, RealEstateController.updateRealEstate)
+  .delete(RealEstateController.deleteRealEstate);
 
 module.exports = router;
