@@ -2,6 +2,8 @@
 
 var app = require('./app');
 
-app.listen(3001, () => {
-  console.log('El servidor está inicializado en el puerto 3001');
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log(`El servidor está inicializado en el puerto ${port}`);
 });
