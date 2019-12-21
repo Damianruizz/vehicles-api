@@ -10,7 +10,11 @@ const pool = mysql.createPool({
   database: 'selling_my_house',
   debug: false 
 });
- 
+
+/**
+* @desc ejecuta una sentencia SQL recibida por parametro
+* @params {String} {Function}
+*/
 const executeQuery = (sql, callback) => {
   pool.getConnection((err, connection) => {
     if (err) {
@@ -26,7 +30,11 @@ const executeQuery = (sql, callback) => {
     }
   });
 }
- 
+
+/**
+* @desc funcion main para ejecucion de sentencias sql
+* @params {String} {Function}
+*/
 const query = (sql, callback) => {    
   executeQuery(sql, (err, result) => {
     if (err) return callback(err);

@@ -3,6 +3,10 @@
 const RealEstateModel = require('../models/RealEstateModel');
 const dto = require('../dto/realEstateDTO');
 
+/**
+* @desc GET para obtener todas las propiedades inmobiliarias
+* @params {Object} {Object}
+*/
 exports.getAllRealEstates = (req, response) => {
   RealEstateModel.getAllRealEstates((error, data) => {
     if(!error) {
@@ -14,6 +18,10 @@ exports.getAllRealEstates = (req, response) => {
   });
 }
 
+/**
+* @desc POST para crear una propiedad inmobiliaria
+* @params {Object} {Object}
+*/
 exports.createRealEstate = (req, response) => {
   RealEstateModel.insertRealEstate(req.body, (error, data) => {
     if (error) return genericError(response, error, 500);
@@ -25,6 +33,10 @@ exports.createRealEstate = (req, response) => {
   });
 }
 
+/**
+* @desc PUT para actualizar una propiedad inmobiliaria
+* @params {Object} {Object}
+*/
 exports.updateRealEstate = (req, response) => {
   RealEstateModel.updateRealEstate(req.body, (error, data) => {
     if (error) return genericError(response, error, 500);
@@ -35,6 +47,10 @@ exports.updateRealEstate = (req, response) => {
   });
 }
 
+/**
+* @desc DELETE de la propiedad inmobiliaria
+* @params {Object} {Object}
+*/
 exports.deleteRealEstate = (req, response) => {
   RealEstateModel.deleteRealEstate(req.body, (error, data) => {
     if (error) return genericError(response, error, 500);
