@@ -1,6 +1,6 @@
 'use strict';
 
-const RealEstateModel = require('../models/RealEstateModel');
+const RealEstateModel = require('../models/realEstateModel');
 const dto = require('../dto/realEstateDTO');
 
 /**
