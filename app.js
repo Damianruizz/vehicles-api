@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const realEstateRoutes = require('./src/routes/realEstateRoutes');
+const vehiclesRoutes = require('./src/routes/vehiclesRoutes');
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -15,6 +15,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use('/api', realEstateRoutes);
+app.use('/api', vehiclesRoutes);
 
 module.exports = app;
