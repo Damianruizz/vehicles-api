@@ -3,7 +3,18 @@
 const VehiclesModel = require('../models/vehiclesModel');
 
 /**
-* @desc GET para obtener todos los vehiculos en mantenimiento
+* @desc returns the generic structure of an error
+* @params {Object} {String} {Number}
+*/
+const genericError = (res, error, errorCode) => {
+  res.status(errorCode).json({
+    success: false,
+    errorMessage: error
+  });  
+}
+
+/**
+* @desc GET to get all vehicles under maintenance
 * @params {Object} {Object}
 */
 exports.getAllVehicles = (req, response) => {
@@ -18,15 +29,19 @@ exports.getAllVehicles = (req, response) => {
 }
 
 /**
-* @desc PUT para actualizar un vehiculo en mantenimiento
+* @desc PUT to update a vehicle under maintenance
 * @params {Object} {Object}
 */
 exports.updateVehicle = (req, response) => {
   VehiclesModel.updateVehicle(req.body, (error, data) => {
     if (error) return genericError(response, error, 500);
-    response.status(200).json({
-      success: true,
-      vehicle: req.body
+    VehiclesModel.getVehicle(req.body, (error, data) => {
+      if(!error) {
+        response.status(200).json({
+          success: true,
+          vehicle: data[0] ? data[0] : {},
+        });
+      }
     });
   });
 }

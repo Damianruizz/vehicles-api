@@ -1,12 +1,11 @@
 'use strict';
 
 /**
-* @desc valida los parametros a recibir, para actualizar info de un auto en mantenimiento
+* @desc validates the parameters to receive, to update info of a car under maintenance
 * @params {Object} {Object} {Function}
 * @return {Function}
 */
 exports.validateParamsToUpdate = (req, res, next) => {
-  console.log("*** req ***", req);
   if (!req.body.id) {
     const error = new Error('Parametros faltantes');
     error.httpStatusCode = 400;
